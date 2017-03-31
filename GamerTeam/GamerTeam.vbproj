@@ -121,11 +121,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="GamerTeam.html" />
+    <Content Include="images\chopper.jpg" />
     <Content Include="images\Final-Fantasy-XV.jpg" />
     <Content Include="images\For-Honor.jpg" />
     <Content Include="images\GamerTeamVideo.mp4" />
     <Content Include="images\ghost-recon-wildlands.jpg" />
     <Content Include="images\god-of-war-4.png" />
+    <Content Include="images\Hotteck.png" />
+    <Content Include="images\megaman.jpg" />
     <Content Include="images\Red-Dead-Redemption-2.png" />
     <Content Include="images\Resident-Evil-7.jpg" />
     <Content Include="images\Retro-Gamer-Title.jpg" />
@@ -135,7 +138,9 @@
     <Content Include="images\The-Last-Of-Us-2.jpg" />
     <Content Include="images\title-complement.png" />
     <Content Include="images\UrvwrBlackWallPaper.png" />
+    <Content Include="images\Yu-Gi-Oh.png" />
     <Content Include="javascript.js" />
+    <Content Include="Profile.html" />
     <Content Include="style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -172,6 +177,11 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="fonts\04B_30__.TTF" />
+    <Content Include="fonts\DUNGRG__.TTF" />
+    <Content Include="fonts\ethnocentric rg it.ttf" />
+    <Content Include="fonts\space age.ttf" />
+    <Content Include="fonts\Blacksword.otf" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
