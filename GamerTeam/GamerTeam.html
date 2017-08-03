@@ -3,22 +3,19 @@
 		<head>
 			<title>GamerTeam</title>
 			<link rel="stylesheet" href="style.css" type="text/css"/>
-			<link rel="stylesheet" href="smartphonescreen.css" type="text/css"/>
-			<link rel="stylesheet" href="tabletscreen.css" type="text/css"/>
-			<link rel="stylesheet" href="desktopscreen.css" type="text/css"/>
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1">
             <div id="head">
-                <div class="Title">
-                    <p style="font-size: 150%; font-align: center; margin: 0%;";><b>GamerTeam</b></p>
-                    <div class="Title2">
+                <div id="Title" class="Color1">
+                    <p style="font-size: 150%; margin: 0%;";><b>GamerTeam</b></p>
+                    <div id="Title2" class="Color1">
                         <button id="blogin" class="Butons" style="width:45%;">Login</button>
                         <button id="bsignup" class="Butons" style="width:45%">SignUp</button>
                     </div>
                 </div>
-                <div id="title-complement"></div>
-                <div id="title-complement" style="top: 31%; right: 0%; transform: rotate(180deg);"></div>
-                <video id="title-video" width="100%" height="60%" autoplay muted loop>
+                <!--<div id="title-complement" class="Color1"></div>
+                <div id="title-complement" class="Color1" style="top: 31%; right: 0%; transform: rotate(180deg);"></div>-->
+                <video id="title-video" autoplay muted loop>
                     <source src="images/GamerTeamVideo.mp4" type="video/mp4">
                     Your browser does not support the video.
                 </video>
@@ -35,7 +32,7 @@
                 <div class="login">
                     <span class="close">&times;</span>
                     <h1>Enter your account</h1>
-                    </br>
+                    <br />
                     <label>Email / Username</label>
                     <input type="text" />
                     <br />
@@ -45,7 +42,7 @@
                         <input id="remember" type="checkbox" />
                         <label for="remember">Remember me on this computer</label>
                     </div>
-                    </br>
+                    <br />
                     <a id="bforgotp" class="forgot_password">Forgot password?</a>
                     <button class="Butons" style="top: 85%; right: 15%; width: 30%; height: 10%">Login</button>
                     <button id="bsignup" class="Butons" style="top: 85%; left:15%; width: 30%; height: 10%">SignUp</button>
@@ -91,31 +88,31 @@
                 </div>
             </div>
             <div class="body-cont">
-                <div class="separator"></div>
-                <div class="radio">
+                <div id="separator" class="Color1"></div>
+                <div id="radio" class="Color2">
                     <p style="position: absolute; left: 2%;">Radio</p>
                     <p style="position: absolute; left: 15%;">Name Music</p>
                     <p style="position: absolute; left: 35%;"> << > >></p>
                 </div>
-                    <div class="Ranking">
+                    <div id="Ranking" class="Color2">
                         <p style="margin-left: 10%; margin-top: 3%; margin-bottom: 3%; font-size: 100%"><b>Melhores Jogadores</b></p>
-                        <div class="RankingL">
+                        <div id="RankingL">
                             <img src="images/UrvwrBlackWallPaper.png" style="height:100%; width:20%; margin-left:10%"/>
                             <p style="top: 18%;">CeithRoTE</p>
                         </div>
-                        <div class="RankingL">
+                        <div id="RankingL">
                             <img src="images/megaman.jpg" style="height:99.5%; width:20%; margin-left:10%" />
                             <p style="top: 35%;">Clebinho</p>
                         </div>
-                        <div class="RankingL">
+                        <div id="RankingL">
                             <img src="images/chopper.jpg" style="height:99.5%; width:20%; margin-left:10%" />
                             <p style="top: 52%;">Chopper</p>
                         </div>
-                        <div class="RankingL">
+                        <div id="RankingL">
                             <img src="images/Hotteck.png" style="height:99.5%; width:20%; margin-left:10%" />
                             <p style="top: 69%;">CoodMaster</p>
                         </div>
-                        <div class="RankingL">
+                        <div id="RankingL">
                             <img src="images/Yu-Gi-Oh.png" style="height:99.5%; width:20%; margin-left:10%"/>
                             <p style="top: 86%;">Adore Del Rey</p>
                         </div>
@@ -175,9 +172,12 @@
                         	</div>
                         </div>
                     </div>
-                    <div id="Rodape">
+                    <div id="Rodape" class="Color2">
+                        <div id="Rodape-content">
+                            <p></p>
+                        </div>
                         <p>All rights reserved ©</p>
-                    </div>
+                </div>
             </div>
                     <script src="javascript.js"></script>
     </body>
