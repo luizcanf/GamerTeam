@@ -50,25 +50,28 @@
             </div>
             <!-- The SignUp Modal -->
             <div id="modals" class="modal">
-                <!-- Modal content -->
-                <div class="login">
-                    <span class="close">&times;</span>
-                    <h1>Register</h1>
-                    <label>Full Name</label>
-                    <input type="text" />
-                    <br />
-                    <label>Email Address</label>
-                    <input type="email" />
-                    <br />
-                    <label>Password</label>
-                    <input type="password" />
-                    <br />
-                    <div class="checkbox">
-                        <input id="send_updates" type="checkbox" />
-                        <label for="send_updates">Send me occasional email updates</label>
-                    </div>
-                    <button class="Butons" style="top: 85%; right: 8%; width: 30%; height: 10%">Register</button>
-                </div>
+				<form name="cadastro" method="post" action="Cadastro.php">
+					<!-- Modal content -->
+					<div class="login">
+						<span class="close">&times;</span>
+						<h1>Register</h1>
+						<label>Full Name</label>
+						<input name="nome" type="text" id="nome" value="<?php echo $nome; ?>"/>
+						<br />
+						<label>Email Address</label>
+						<input name="email" type="text" id="email" value="<?php echo $email; ?>" />
+						<br />
+						<label>Password</label>
+						<input name="senha" type="password" id="senha" value="<?php echo $senha; ?>" />
+						<br />
+						<div class="checkbox">
+							<input id="send_updates" type="checkbox" />
+							<label for="send_updates">Send me occasional email updates</label>
+						</div>
+						<input type="submit" name="Submit" value="Enviar" class="Butons" style="top: 85%; right: 8%; width: 30%; height: 10%" /> <br />
+						<!-- <button class="Butons" style="top: 85%; right: 8%; width: 30%; height: 10%">Register</button> -->
+					</div>
+				</form>
             </div>
             <!-- The Forgot Password Modal -->
             <div id="modalfp" class="modal">
