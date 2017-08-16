@@ -1,178 +1,32 @@
-<?php
-
-include "config.php";
-
-$nome = trim($_POST['nome']);
-$email = trim($_POST['email']);
-$senha = trim($_POST['senha']);
-
-/* Vamos checar algum erro nos campos */
-
-if ((!$nome) || (!$email) || (!$senha)){
-
-echo "ERRO: <br /><br />";
-
-if (!$nome){
-
-echo "Nome é requerido.<br />";
-
-}
-
-if (!$email){
-
-echo "Email é um campo requerido.<br /><br />";
-
-}
-
-if (!$senha){
-
-echo "Senha é requerido.<br /><br />";
-
-}
-
-echo "Preencha os campos abaixo: <br /><br />";
-
-include "GamerTeam.html";
-
-}else{
-
-/* Vamos checar se o nome de Usuário escolhido e/ou Email já existem no banco de dados */
-
-$sql_email_check = mysql_query(
-
-"SELECT COUNT(usuario_id) FROM usuario WHERE email='{$email}'"
-
-);
-
-$sql_senha_check = mysql_query(
-
-"SELECT COUNT(senha_id) FROM usuario WHERE nome='{$nome}'"
-
-);
-
-$eReg = mysql_fetch_array($sql_email_check);
-$uReg = mysql_fetch_array($sql_senha_check);
-
-$email_check = $eReg[0];
-$nome_check = $uReg[0];
-
-if (($email_check > 0) || ($nome_check > 0)){
-
-echo "<strong>ERRO</strong>: <br /><br />";
-
-if ($email_check > 0){
-
-echo "Este email já está sendo utilizado.<br /><br />";
-
-unset($email);
-
-}
-
-if ($nome_check > 0){
-
-echo "Este nome de usuário já está sendo
-utilizado.<br /><br />";
-
-unset($nome);
-
-}
-
-include "Cadastro.php";
-
-}else{
-
-/* Se passarmos por esta verificação ilesos é hora de
-finalmente cadastrar os dados. Vamos utilizar uma função para gerar a senha de
-forma randômica*/
-
-function makeRandomPassword(){
-
-$salt = "abchefghjkmnpqrstuvwxyz0123456789";
-srand((double)microtime()*1000000);
-$i = 0;
-
-while ($i <= 7){
-
-$num = rand() % 33;
-$tmp = substr($salt, $num, 1);
-$pass = $pass . $tmp;
-$i++;
-
-}
-
-return $pass;
-
-}
-
-$senha_randomica = makeRandomPassword();
-$senha = md5($senha_randomica);
-
-// Inserindo os dados no banco de dados
-
-$info = htmlspecialchars($info);
-
-$sql = mysql_query(
-
-"INSERT INTO usuarios
-(nome, sobrenome, email, usuario, senha, info, data_cadastro)
-
-VALUES
-('$nome', '$email', '$usuario', '$senha', now())")
-
-or die( mysql_error()
-
-);
-
-if (!$sql){
-
-echo "Ocorreu um erro ao criar sua conta, entre em contato.";
-
-}else{
-
-$usuario_id = mysql_insert_id();
-
-// Enviar um email ao usuário para confirmação e ativar o cadastro!
-
-$headers = "MIME-Version: 1.0\n";
-$headers .= "Content-type: text/html; charset=iso-8859-1\n";
-$headers .= "From: Teu Domínio - Webmaster<email@teusite.com.br>";
-
-$subject = "Confirmação de cadastro - teusite.com.br";
-$mensagem = "Prezado {$nome} {$sobrenome},<br />
-Obrigado pelo seu cadastro em nosso site, <a href='http://www.teusite.com.br'>
-http://www.teusite.com.br</a>!<br /> <br />
-
-Para confirmar seu cadastro e ativar sua conta em nosso site, podendo acessar à
-áreas exclusivas, por favor clique no link abaixo ou copie e cole na barra de
-endereço do seu navegador.<br /> <br />
-
-<a href='http://www.teusite.com.br/ativar.php?id={$usuario_id}&code={$senha}'>
-
-http://www.teusite.com.br/ativar.php?id={$usuario_id}&code={$senha}
-
-</a>
-
-<br /> <br />
-Após a ativação de sua conta, você poderá ter acesso ao conteúdo exclusivo
-efetuado o login com os seguintes dados abaixo:<br > <br />
-
-<strong>Usuario</strong>: {$usuario}<br />
-<strong>Senha</strong>: {$senha_randomica}<br /> <br />
-
-Obrigado!<br /> <br />
-
-Webmaster<br /> <br /> <br />
-Esta é uma mensagem automática, por favor não responda!";
-
-mail($email, $subject, $mensagem, $headers);
-
-echo "Foi enviado para seu email - ( ".$email." ) um pedido de
-confirmação de cadastro, por favor verifique e sigas as instruções!";
-
-}
-
-}
-
-}
-
+<?php 
+
+$login = $_POST['login'];
+$senha = MD5($_POST['senha']);
+$connect = mysql_connect('localhost','nome_de_usuario','senha');
+$db = mysql_select_db('GamerTeam_usuario');
+$query_select = "SELECT login FROM usuarios WHERE login = '$login'";
+$select = mysql_query($query_select,$connect);
+$array = mysql_fetch_array($select);
+$logarray = $array['login'];
+
+  if($login == "" || $login == null){
+    echo"<script language='javascript' type='text/javascript'>alert('O campo login deve ser preenchido');window.location.href='cadastro.html';</script>";
+
+    }else{
+      if($logarray == $login){
+
+        echo"<script language='javascript' type='text/javascript'>alert('Esse login já existe');window.location.href='cadastro.html';</script>";
+        die();
+
+      }else{
+        $query = "INSERT INTO usuarios (login,senha) VALUES ('$login','$senha')";
+        $insert = mysql_query($query,$connect);
+        
+        if($insert){
+          echo"<script language='javascript' type='text/javascript'>alert('Usuário cadastrado com sucesso!');window.location.href='login.html'</script>";
+        }else{
+          echo"<script language='javascript' type='text/javascript'>alert('Não foi possível cadastrar esse usuário');window.location.href='cadastro.html'</script>";
+        }
+      }
+    }
 ?>
