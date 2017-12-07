@@ -1,4 +1,5 @@
-<?php 
+<?php
+require_once("Config.php");
 
 //4 campos do form
 $nome_completo = $_POST['nome_completo'];
@@ -6,10 +7,11 @@ $nickname = $_POST['nickname'];
 $email = $_POST['email'];
 $senha = ($_POST['senha']);
 
-$conexao = mysqli_connect("localhost","root","root","gamerteam");
+$config = new Config();
+$conexao = $config->conectaBanco();
 
   if (!$conexao){
-      die ("Erro de conexÃ£o com localhost, o seguinte erro ocorreu -> ".mysqli_connect_error());
+      die ("Erro de conexão com localhost, o seguinte erro ocorreu -> ".mysqli_connect_error());
   }
   //conectando com a tabela do banco de dados
   $query = "SELECT email from usuarios where email=\"$email\"";
@@ -21,7 +23,7 @@ $conexao = mysqli_connect("localhost","root","root","gamerteam");
         if($result = mysqli_query($conexao,$query)) {
             echo "Seu cadastro foi realizado com sucesso!";
             header("location: Profile.html");
-        } else { 
+        } else {
               echo "bosta.";
         }
       } else {

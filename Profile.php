@@ -1,4 +1,12 @@
-﻿<!DOCTYPE html>
+<?php
+	header("Content-Type: text/html; charset=ISO-8859-1",true);
+
+  session_start();
+	$nick = $_SESSION['usuarioPHP']['nick'];
+  $pontos = $_SESSION['usuarioPHP']['pontuacao'];
+?>
+
+<!DOCTYPE html>
 <html>
 <head>
     <title></title>
@@ -15,8 +23,8 @@
     <div id="profile-complement">
         <div id="Profile_image"></div>
         <div id="Profile_Info">
-            <p>Chopper</p>
-            <p>XP: 4.000.000</p>
+            <p><?php echo $nick?></p>
+            <p>XP: <?php echo $pontos?></p>
             <div id="Notfications">2</div>
         </div>
     </div>
@@ -51,7 +59,7 @@
     </div>
     <div id="Postagens">
         <img src="images/megaman.jpg" style="position: absolute; height:5%; width:8%; border-radius: 20%; margin: 2% 2%;" />
-        <p style="position:absolute; left: 12%; top: 2%; color:#4D1A57;">Clebinho</p>
+        <p style="position:absolute; left: 12%; top: 2%; color:#4D1A57;">CLEBINHO! \o/</p>
         <img src="images/red-dead-redemption-2-leak.jpg" style="position: absolute; left: 9%; top: 8%; height:30%; width:80%;" />
         <div class="React">Nice!</div>
         <div class="React" style="left: 35%;">Coment</div>

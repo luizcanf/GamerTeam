@@ -1,10 +1,25 @@
 <?php
+	session_start();
 
-define('BD_USER', 'root');
-define('BD_PASS', 'root');
-define('BD_NAME', 'gamerteam');
+	class Config
+	{
+		private $servidor = "localhost";
+		private $user = "root";
+		private $senha = "4556465";
+		private $banco = "gamerteam";
 
-mysql_connect('localhost', BD_USER, BD_PASS);
-mysql_select_db(BD_NAME);
+		function conectaBanco() {
+			$con = mysqli_connect($this->servidor, $this->user, $this->senha, $this->banco);
+			//conecta no mysql faz favor
+
+			if (!$con) {
+			    die('Não foi possível conectar: ' . mysqli_error());
+			}
+
+			return $con;
+		}
+	}
+
+	$_SESSION['ROOT_ADDRESS'] = dirname(__FILE__);
 
 ?>
